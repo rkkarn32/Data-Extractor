@@ -17,14 +17,14 @@ public class Validator {
     private Pattern emailPattern;
     private Pattern phonePattern;
     private Matcher matcher;
-
+    
     private static final String EMAIL_PATTERN
             = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
             + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
 
     public Validator() {
         emailPattern = Pattern.compile(EMAIL_PATTERN);
-        
+        phonePattern = Pattern.compile("\\d+");
     }
 
     public boolean emailValidate(final String hex) {
@@ -34,8 +34,8 @@ public class Validator {
 
     }
     public boolean phonevalidator(final String hex){
-        
-        return true;
+        matcher = phonePattern.matcher(hex);
+        return matcher.matches();
     }
     public String formatPhoneString(String phone){
         int l = phone.length();
@@ -44,12 +44,9 @@ public class Validator {
         else{
             int i = l-10;
             String subString = phone.substring(i, l);
-            try {
-                long num = Long.parseLong(subString);
-            } catch (NumberFormatException e) {
-                
-            }
-            return subString;
+            if(phonevalidator(subString))
+                return subString;
         }
+        return null;
     }
 }

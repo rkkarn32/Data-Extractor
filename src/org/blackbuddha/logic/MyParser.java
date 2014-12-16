@@ -37,12 +37,13 @@ public class MyParser {
         boolean first =true;
         for(String s:phones){
                 String formatted = validator.formatPhoneString(s);
-                 if(!first)
-                    outputString.append(",");
-                else
-                    first =false;
-                outputString.append(formatted);
-            
+                if(formatted!=null){
+                    if(!first)
+                        outputString.append(",");
+                    else
+                        first =false;
+                    outputString.append(formatted);
+                }
         }
         return outputString.toString();
     }
