@@ -1,4 +1,4 @@
-package org.blackbudha.validator;
+package org.blackbuddha.logic;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -34,6 +34,22 @@ public class Validator {
 
     }
     public boolean phonevalidator(final String hex){
+        
         return true;
+    }
+    public String formatPhoneString(String phone){
+        int l = phone.length();
+        if(l<10)
+            return null;
+        else{
+            int i = l-10;
+            String subString = phone.substring(i, l);
+            try {
+                long num = Long.parseLong(subString);
+            } catch (NumberFormatException e) {
+                
+            }
+            return subString;
+        }
     }
 }
