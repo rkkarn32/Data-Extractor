@@ -14,7 +14,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import org.blackbudha.gui.FileUploader;
+import org.blackbudha.gui.ExtractorApplication;
 
 /**
  *
@@ -37,9 +37,9 @@ public class FileProcessor {
             
             in.close();
         } catch (FileNotFoundException ex) {
-            Logger.getLogger(FileUploader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExtractorApplication.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
-            Logger.getLogger(FileUploader.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(ExtractorApplication.class.getName()).log(Level.SEVERE, null, ex);
         } finally {
         }
         return sb.toString();
